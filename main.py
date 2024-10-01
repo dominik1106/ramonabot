@@ -3,7 +3,7 @@ import os, discord, dotenv, requests, json
 dotenv.load_dotenv()
 token = str(os.getenv("BOT_TOKEN"))
 API_KEY = str(os.getenv("API_KEY"))
-API_URL = "http://localhost:3000"
+API_URL = "http://node-backend:3000"
 
 bot = discord.Bot()
 
