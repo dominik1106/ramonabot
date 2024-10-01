@@ -22,7 +22,7 @@ async def kontostand(ctx: discord.ApplicationContext, user: discord.User):
     res = requests.get(url=url)
 
     if(res.status_code != 200):
-        await ctx.respond("Error" + res.json())
+        await ctx.respond("Error" + str(res.json()))
 
     account = json.loads(res.text)
 
@@ -49,7 +49,7 @@ async def uberweisung(ctx: discord.ApplicationContext, receiver: discord.User, a
     res = requests.post(url=url, data=body, headers=headers)
     
     if(res.status_code != 200):
-        await ctx.respond("Error" + res.json())
+        await ctx.respond("Error" + str(res.json()))
 
     transaktion = res.json()
 
@@ -68,7 +68,7 @@ async def transaktionen(ctx: discord.ApplicationContext, id: int):
     res = requests.get(url=url)
 
     if(res.status_code != 200):
-        await ctx.respond("Error" + res.json())
+        await ctx.respond("Error" + str(res.json()))
 
     transaktion = res.json()
 
