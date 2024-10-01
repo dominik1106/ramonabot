@@ -15,6 +15,8 @@ async def on_ready():
 async def kontostand(ctx: discord.ApplicationContext, user: discord.User):
     url = "{api_url}/pub/account/{id}".format(api_url=API_URL, id=user.id)
 
+    print(user.id)
+
     res = requests.get(url=url)
 
     if(res.status_code != 200):
