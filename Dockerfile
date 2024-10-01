@@ -36,5 +36,7 @@ USER appuser
 # Copy the source code into the container.
 COPY . .
 
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Run the application.
 CMD python ./main.py
