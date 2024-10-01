@@ -15,7 +15,7 @@ async def on_ready():
 async def kontostand(ctx: discord.ApplicationContext, user: discord.User):
     url = "{api_url}/pub/account/{id}".format(api_url=API_URL, id=str(user.id))
 
-    print(user.id)
+    print(str(user.id))
 
     res = requests.get(url=url)
 
