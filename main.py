@@ -13,7 +13,7 @@ async def on_ready():
 
 @bot.slash_command(name="kontostand")
 async def kontostand(ctx: discord.ApplicationContext, user: discord.User):
-    url = "{api_url}/pub/account/{id}".format(api_url=API_URL, id=user.id)
+    url = "{api_url}/pub/account/{id}".format(api_url=API_URL, id=str(user.id))
 
     print(user.id)
 
@@ -34,8 +34,8 @@ async def uberweisung(ctx: discord.ApplicationContext, receiver: discord.User, a
     url = "{api_url}/prv/transfer".format(api_url=API_URL)
 
     body = {
-        "sender": ctx.author.id,
-        "receiver": receiver.id,
+        "sender": str(ctx.author.id),
+        "receiver": str(receiver.id),
         "amount": amount,
         "note": note
     }
@@ -61,7 +61,7 @@ async def uberweisung(ctx: discord.ApplicationContext, receiver: discord.User, a
 
 @bot.slash_command(name="transaktion")
 async def transaktionen(ctx: discord.ApplicationContext, id: int):
-    url = "{api_url}/pub/transaction/{id}".format(api_url=API_URL, id=id)
+    url = "{api_url}/pub/transaction/{id}".format(api_url=API_URL, id=str(id))
 
     res = requests.get(url=url)
 
@@ -76,6 +76,8 @@ async def transaktionen(ctx: discord.ApplicationContext, id: int):
     amount = transaktion["amount"]
     note = transaktion["note"]
     trs_id = transaktion["id"]
+
+
 
     await ctx.respond("Überweisung von {sender} an {receiver}\nMenge: {amount} Ramonas\nNotiz: ({note})\nTransaktions-ID: {id}".format(
         sender=sender.name,
