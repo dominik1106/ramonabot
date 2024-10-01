@@ -62,6 +62,7 @@ async def uberweisung(ctx: discord.ApplicationContext, receiver: discord.User, a
 @bot.slash_command(name="transaktion")
 async def transaktionen(ctx: discord.ApplicationContext, id: int):
     url = "{api_url}/pub/transaction/{id}".format(api_url=API_URL, id=str(id))
+    print(url)
 
     res = requests.get(url=url)
 
