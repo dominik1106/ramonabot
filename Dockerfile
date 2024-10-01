@@ -18,6 +18,9 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
 ARG UID=10001
@@ -35,8 +38,6 @@ USER appuser
 
 # Copy the source code into the container.
 COPY . .
-
-RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the application.
 CMD python ./main.py
