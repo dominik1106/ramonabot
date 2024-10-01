@@ -33,6 +33,8 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
+ENV PATH="/home/appuser/.local/bin:$PATH"
+
 # Switch to the non-privileged user to run the application.
 USER appuser
 
